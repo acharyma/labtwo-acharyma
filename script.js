@@ -19,9 +19,10 @@ function filterData(category) {
 
 }
 var attractions;
-fetch('/attractions.json')
+console.log("NEW FETCH");
+fetch('./attractions.json')
 .then(response => response.json())
-.then(data => {
+	.then(data => {
 		attractions = data;
 		console.log('attractions - (a)', attractions);
 		let topFive = attractions.sort((a, b) => (a.Visitors > b.Visitors) ? 1 : -1).reverse();
