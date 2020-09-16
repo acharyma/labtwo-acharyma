@@ -15,11 +15,14 @@ function filterData(category) {
 	 * - the max. length of 'data' is 5
 	 *
 	 * **************************************************/
+
+	 return attractions.filter((attraction => attraction.Category == category ));
+
 	
 
 }
 var attractions;
-console.log("NEW FETCH");
+console.log("NEW FILTER");
 fetch('./attractions.json')
 .then(response => response.json())
 	.then(data => {
@@ -39,7 +42,7 @@ fetch('./attractions.json')
 				selectedAttractions = attractions;
 			}
 			else{
-				selectedAttractions = attractions.filter((attraction => attraction.Category == event.target.value ));
+				selectedAttractions = filterData(event.target.value);
 			}
 			console.log(selectedAttractions);
 			topFive = selectedAttractions.sort((a, b) => (a.Visitors > b.Visitors) ? 1 : -1).reverse();
